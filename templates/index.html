@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+      <h1>Tweets!</h1>
+
+      {% for post in posts %}
+        <div class="newfriend">
+          <div class="avi">
+            <h1>avi here</h1>
+            {{ post.avi }}
+          </div>
+
+          <p>{{ post.handle }}</p>
+          <p>{{ post.text }}</p>
+          <p>{{ post.hashtags }}</p>
+          <p><a href="">Go to profile</a></p>
+        <div>
+      {% endfor %}
+  </body>
+</html>

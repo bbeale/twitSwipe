@@ -1,5 +1,4 @@
 from flask import Flask, abort, flash, redirect, render_template, request, url_for
-from flask_images import Images, resized_img_tag
 from tweepy import TweepError, RateLimitError
 from include import config
 import tweepy, pprint, os
@@ -7,7 +6,6 @@ import tweepy, pprint, os
 app = Flask(__name__)
 app.config['DEBUG'] = False
 app.secret_key = config.img_key
-images = Images(app)
 
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
@@ -38,18 +36,19 @@ def main():
                     # print tweet.text
                     appendtweet = {
                         "handle": tweet.user.screen_name, 
-                        "avi": resized_img_tag(url_for(str(tweet.user.profile_image_url)), width=100, height=100, mode="fit"),
+                        "avi": str(tweet.user.profile_image_url),
                         "following": tweet.user.following,
                         "text": tweet.text,
                         "hashtags": []
                     }
-                    print "avi:", appendtweet["avi"]
+                    # print "avi:", appendtweet["avi"]
 
-                    if tweet.entities["hashtags"]:
+                    if len(tweet.entities["hashtags"]) > 0:
                         for h in tweet.entities["hashtags"]:
                             # print "hash:::", h
                             appendtweet["hashtags"].append(h)
                     
+                    print appendtweet["hashtags"]
                     _tweets.append(appendtweet)
 
     except RateLimitError as r:

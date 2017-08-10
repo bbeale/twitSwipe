@@ -32,23 +32,28 @@ def main():
                                     include_rts=False,
                                     lang="en").items():
 
-                if "RT" not in tweet.text and tweet.user.screen_name not in _tweets and len(_tweets) < 10 and tweet.user.profile_image_url:
-                    # print tweet.text
+                if "RT" not in tweet.text \
+                    and tweet.user.screen_name not in _tweets \
+                    and tweet.text not in _tweets \
+                    and len(_tweets) < 10 \
+                    and tweet.user.profile_image_url:
+
                     appendtweet = {
                         "handle": tweet.user.screen_name, 
-                        "avi": str(tweet.user.profile_image_url),
+                        "avi": str(tweet.user.profile_image_url_https),
                         "following": tweet.user.following,
                         "text": tweet.text,
                         "hashtags": []
                     }
-                    # print "avi:", appendtweet["avi"]
+                    if "_normal" in appendtweet["avi"]:
+                        _b = appendtweet["avi"].split("_normal")
+                        appendtweet["avi"] = "%s_400x400%s" % (_b[0], _b[1])
 
                     if len(tweet.entities["hashtags"]) > 0:
                         for h in tweet.entities["hashtags"]:
-                            # print "hash:::", h
                             appendtweet["hashtags"].append(h)
                     
-                    print appendtweet["hashtags"]
+                    # print appendtweet["hashtags"]
                     _tweets.append(appendtweet)
 
     except RateLimitError as r:

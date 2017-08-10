@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.banner {
+    background-color: #2A2D5B;
+    height: 60px;
+}
+
+.banner h1 {
+    color: white;
+    text-align: center;
+    line-height: 60px;
+}
+
+.tweets {
+    min-width: 900px;
+    display: block;
+    background-color: #B2E0FF;
+    margin: 0 auto;
+}
+
+.newfriend {
+    display: block;
+    width: 360px;
+    height: 540px;
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+}   
+
+.avi img {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 20px; 
+}

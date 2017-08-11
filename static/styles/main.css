@@ -10,23 +10,25 @@ body {
 .banner h1 {
     color: white;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
 }
 
 .tweets {
-    min-width: 900px;
+    max-width: 900px;
     display: block;
     background-color: #B2E0FF;
     margin: 0 auto;
 }
 
 .newfriend {
-    display: block;
     width: 360px;
-    height: 540px;
-    margin: 0 auto;
+    height: 900px;
     background-color: white;
-    position: relative;
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    top: 60px;
+    left: 600px;
 }   
 
 .avi img {
@@ -35,4 +37,13 @@ body {
     display: block;
     margin: 0 auto;
     padding-top: 20px; 
+}
+
+.actions {
+    width: 100%;
+}
+
+/* Wrap the go to profile button in a div if styling all anchors becomes problematic */
+a {
+    font-size: 10px;
 }

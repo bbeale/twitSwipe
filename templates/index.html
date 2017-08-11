@@ -2,6 +2,7 @@
   <head>
     <title>{{ title }}</title>
     <link type="text/css" rel="stylesheet" href= "{{ url_for('static',filename='styles/main.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
     <div class="banner">
@@ -9,7 +10,7 @@
     </div>
     <div class="tweets">
       {% for post in posts %}
-        <div class="newfriend">
+        <div class="newfriend jumbotron">
           <div class="avi">
             <img src="{{ post.avi }}" />
           </div>
@@ -21,7 +22,11 @@
                 <p>{{ h }}</p>
               {% endfor %}
           {% endif %}
-          <p><a href="">Go to profile</a></p>
+          <a class="btn btn-lg btn-primary" href="#" role="button">Go to profile</a>
+          <div class="actions">
+            <a class="btn btn-lg btn-success" href="#" role="button">Follow</a>
+            <a class="btn btn-lg btn-secondary" href="#" role="button">Pass</a>
+          </div>
         </div>
       {% endfor %}
       </div>

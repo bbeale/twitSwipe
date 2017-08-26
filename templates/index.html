@@ -5,30 +5,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-    <div class="banner">
+    <div class="navbar sticky-top">
       <h1>New stoner friends</h1>
     </div>
-    <div class="tweets">
-      {% for post in posts %}
-        <div class="newfriend jumbotron">
-          <div class="avi">
-            <img src="{{ post.avi }}" />
+    <div class="wrapper" id="wrapper">
+      <div class="tweets" id="tweets">
+        {% for post in posts %}
+          <div class="newfriend jumbotron">
+            <div class="avi">
+              <img src="{{ post.avi }}" />
+            </div>
+            <hr>
+            <div class="card lastpost_container">
+              <div class="lastpost">
+                <p>{{ post.handle }}</p>
+                <!-- <p>{{ post.text }}</p> -->
+                {% if post.hashtags|length > 0 %}
+                    <p>{{ post.hashtags }}</p>
+                    {% for h in posts.hashtags %}
+                      <p>{{ h }}</p>
+                    {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            <hr>            
+            <div class="actions">
+              <ul>
+                <li><a class="btn btn-lg btn-outline-secondary action pass" href="#" role="button">Pass</a></li>
+                <li><a class="btn btn-lg btn-outline-primary profile" href="#" role="button">Go to profile</a></li>
+                <li><a class="btn btn-lg btn-outline-success action follow" href="#" role="button">Follow</a></li>
+              </ul>
+            </div>
           </div>
-          <p>{{ post.handle }}</p>
-          <p>{{ post.text }}</p>
-          {% if post.hashtags|length > 0 %}
-              <p>{{ post.hashtags }}</p>
-              {% for h in posts.hashtags %}
-                <p>{{ h }}</p>
-              {% endfor %}
-          {% endif %}
-          <a class="btn btn-lg btn-primary" href="#" role="button">Go to profile</a>
-          <div class="actions">
-            <a class="btn btn-lg btn-success" href="#" role="button">Follow</a>
-            <a class="btn btn-lg btn-secondary" href="#" role="button">Pass</a>
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
       </div>
+    </div>
   </body>
+  <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </html>

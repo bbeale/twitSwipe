@@ -25,17 +25,17 @@ def main():
     _tweets = []
     
     try:
-        while len(_tweets) < 10:
+        while len(_tweets) < 1:  # 10:
             for tweet in tweepy.Cursor(api.search,
                                     q="marijuana",
                                     result_type="recent",
                                     include_rts=False,
-                                    lang="en").items():
+                                    lang="en").items(1):
 
                 if "RT" not in tweet.text \
                     and tweet.user.screen_name not in _tweets \
                     and tweet.text not in _tweets \
-                    and len(_tweets) < 10 \
+                    and len(_tweets) < 1 \
                     and tweet.user.profile_image_url:
 
                     appendtweet = {

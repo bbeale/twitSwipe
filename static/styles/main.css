@@ -11,6 +11,10 @@ body {
     width: 100%;
 }
 
+.navbar h1 {
+    margin: 0 auto;
+}
+
 .wrapper {
     position: relative;
     padding: 0;

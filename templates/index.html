@@ -19,21 +19,15 @@
             <div class="card lastpost_container">
               <div class="lastpost">
                 <p>{{ post.handle }}</p>
-                <!-- <p>{{ post.text }}</p> -->
-                {% if post.hashtags|length > 0 %}
-                    <p>{{ post.hashtags }}</p>
-                    {% for h in posts.hashtags %}
-                      <p>{{ h }}</p>
-                    {% endfor %}
-                {% endif %}
+                <p>{{ post.text }}</p>
               </div>
             </div>
             <hr>            
             <div class="actions">
               <ul>
-                <li><a class="btn btn-lg btn-outline-secondary action pass" href="#" role="button">Pass</a></li>
-                <li><a class="btn btn-lg btn-outline-primary profile" href="#" role="button">Go to profile</a></li>
-                <li><a class="btn btn-lg btn-outline-success action follow" href="#" role="button">Follow</a></li>
+                <li><a class="btn btn-lg btn-outline-secondary action pass" onclick="swipeLeft()" role="button">Pass</a></li>
+                <li><a class="btn btn-lg btn-outline-primary profile" href="https://twitter.com/{{ post.handle }}" target="_blank" role="button">Go to profile</a></li>
+                <li><a class="btn btn-lg btn-outline-success action follow" onclick="swipeRight()" role="button">Follow</a></li>
               </ul>
             </div>
           </div>

@@ -1,1 +1,1 @@
-import potbot.views
+import twitSwipe.views
